@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3324279228502997772}
   - component: {fileID: 4974971119608613406}
   - component: {fileID: 477661525392777748}
+  - component: {fileID: 1702071799008541579}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -101,3 +102,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.2309849}
   m_Size: {x: 1.93, y: 2.92}
   m_Direction: 0
+--- !u!114 &1702071799008541579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2952252214065945597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d2bc4acf7c81948944c6e38b6c9a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
