@@ -11,7 +11,7 @@ namespace RoguelikeProto.Scripts.Camera
             var targetPos = _target.transform.position;
             targetPos.z = -15;
             
-            transform.position += (targetPos - transform.position) * 0.05f;
+            transform.position += (targetPos - transform.position) * 0.1f;
         }
     }
 }
