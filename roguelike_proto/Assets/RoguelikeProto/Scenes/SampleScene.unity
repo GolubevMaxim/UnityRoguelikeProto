@@ -284,6 +284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1702071799008541579, guid: d99bf28fc74287d449ceaca97d07fb09, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 331719546}
     - target: {fileID: 2952252214065945597, guid: d99bf28fc74287d449ceaca97d07fb09, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
@@ -847,6 +851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3592651762597558284, guid: 39291e1cd2948ce4493f4e0e0897d0db, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 331719546}
     - target: {fileID: 4014675272184144431, guid: 39291e1cd2948ce4493f4e0e0897d0db, type: 3}
       propertyPath: m_Name
       value: RangeEnemy
