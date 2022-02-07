@@ -330,8 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4144cf634d74e334388b9f79126eec2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  playerSettings: {fileID: 11400000, guid: ed6a7e458ac135c47b9e5168831bd2c3, type: 2}
   _rigidbody2D: {fileID: 331719543}
+  _aim: {fileID: 88125794}
+  rollCoolDown: 1
+  rollingTime: 0.75
+  rollingDistance: 0.4
 --- !u!70 &331719545
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -377,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911b872ab0d7554da64699e65f648a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 807773112}
 --- !u!1001 &462644089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -460,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 471369809}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.40000004, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 331719546}
@@ -616,6 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 331719542}
+  aim: {fileID: 88125794}
+  cameraSettings: {fileID: 11400000, guid: 39129684b53848d459ee50094ae0a84d, type: 2}
 --- !u!1001 &592891172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -723,7 +730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b2c2b51d0065a4daf4b2de79a2b530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 88125794}
+  aim: {fileID: 88125794}
+  player: {fileID: 331719542}
 --- !u!4 &1168788650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4312944143028326324, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
@@ -859,6 +867,14 @@ PrefabInstance:
     - target: {fileID: 5181471018937502437, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181471018937502437, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747873353385734391, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8892691182650770842, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
       propertyPath: m_LocalScale.x

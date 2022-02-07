@@ -1,13 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace RoguelikeProto.Scripts.Player
 {
     public class Flipper : MonoBehaviour
     {
+        [SerializeField] private GameObject weapon;
         void FixedUpdate()
         {
             bool flip = Screen.width / 2f > Input.mousePosition.x;
-            
+
             foreach (Transform child in transform)
             {
                 if (child.name == "sprite")
@@ -15,13 +17,11 @@ namespace RoguelikeProto.Scripts.Player
                     child.GetComponent<SpriteRenderer>().flipX = flip;
                 }
             }
-            
-            var weapon = GameObject.Find("Weapon");
 
             var currentScale = weapon.transform.localScale;
             var newScale = currentScale;
 
-            if ((flip && currentScale.y > 0) ||  (!flip && currentScale.y < 0))
+            if (flip && currentScale.y > 0 || !flip && currentScale.y < 0)
             {
                 newScale.y *= -1;
             }

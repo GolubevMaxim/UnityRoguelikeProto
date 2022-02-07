@@ -15,7 +15,7 @@ namespace RoguelikeProto.Scripts.Aim
             MoveAimToMousePosition();
         }
 
-        void MoveAimToMousePosition()
+        private void MoveAimToMousePosition()
         {
             if (UnityEngine.Camera.main != null)
             {
