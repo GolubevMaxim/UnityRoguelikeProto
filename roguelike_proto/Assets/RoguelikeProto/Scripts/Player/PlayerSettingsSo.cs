@@ -6,6 +6,9 @@ namespace RoguelikeProto.Scripts.Player
     public class PlayerSettingsSo : ScriptableObject
     {
         [field: SerializeField] public float speed;
-        [field: SerializeField] public float health;
+        [field: SerializeField] public float maxHealth;
+        [field: SerializeField] public float rollTime;
+        [field: SerializeField] public float rollDistance;
+        [field: SerializeField] public float rollCooldown;
     }
 }
