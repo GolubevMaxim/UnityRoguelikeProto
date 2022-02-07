@@ -56,23 +56,21 @@ namespace RoguelikeProto.Scripts.Player
 
         IEnumerator RollingCoroutine()
         {
-            /*var rollingTimeCounter = rollingTime;
-            while (rollingTimeCounter > 0)
-            {
-                var position = transform.position;
-                position = Vector3.Lerp
-                    (position, RollingDirection + position, rollingTime - rollingTimeCounter);
-                transform.position = position;
-                rollingTimeCounter -= Time.deltaTime;
-                yield return null;
-            }*/
             _rigidbody2D.AddForce(RollingDirection, ForceMode2D.Impulse);
             yield return new WaitForSeconds(playerSettings.rollTime);
             _isRolling = false;
-            _playerSprite.color = Color.white;
             //_playerSprite.transform.Rotate(new Vector3(0, 0, -90));
+            
             _onCoolDown = true;
-            yield return new WaitForSeconds(playerSettings.rollCooldown);
+            var cooldownTimeCounter = playerSettings.rollCooldown;
+            while (cooldownTimeCounter > 0)
+            {
+                float colorChangeStep =
+                    (playerSettings.rollCooldown - cooldownTimeCounter) / playerSettings.rollCooldown;
+                _playerSprite.color = Color.Lerp(Color.black, Color.white, colorChangeStep);
+                cooldownTimeCounter -= Time.deltaTime;
+                yield return null;
+            }
             _onCoolDown = false;
         }
     }

@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   speed: 10
-  health: 10
+  maxHealth: 10
+  rollTime: 0.75
+  rollDistance: 3
+  rollCooldown: 1

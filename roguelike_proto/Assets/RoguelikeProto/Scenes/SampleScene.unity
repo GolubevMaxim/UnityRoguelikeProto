@@ -333,9 +333,6 @@ MonoBehaviour:
   playerSettings: {fileID: 11400000, guid: ed6a7e458ac135c47b9e5168831bd2c3, type: 2}
   _rigidbody2D: {fileID: 331719543}
   _aim: {fileID: 88125794}
-  rollCoolDown: 1
-  rollingTime: 0.75
-  rollingDistance: 0.4
 --- !u!70 &331719545
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -731,7 +728,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aim: {fileID: 88125794}
-  player: {fileID: 331719542}
 --- !u!4 &1168788650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4312944143028326324, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
