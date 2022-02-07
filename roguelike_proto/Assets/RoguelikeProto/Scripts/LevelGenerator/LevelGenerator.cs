@@ -97,11 +97,7 @@ namespace RoguelikeProto.Scripts.LevelGenerator
             {
                 var room = queue.Dequeue();
 
-                foreach (var delta in new int[][]
-                         {
-                             new int[] {0, 1},
-                             new int[] {0, -1}, new int[] {1, 0}, new int[] {-1, 0}
-                         })
+                foreach (var delta in new[] {new[] {0, 1}, new[] {0, -1}, new[] {1, 0}, new[] {-1, 0}})
                 {
                     var dx = delta[0];
                     var dy = delta[1];
@@ -146,11 +142,7 @@ namespace RoguelikeProto.Scripts.LevelGenerator
             {
                 var room = queue.Dequeue();
 
-                foreach (var delta in new int[][]
-                         {
-                             new int[] {0, 1},
-                             new int[] {0, -1}, new int[] {1, 0}, new int[] {-1, 0}
-                         })
+                foreach (var delta in new[] {new[] {0, 1}, new[] {0, -1}, new[] {1, 0}, new[] {-1, 0}})
                 {
                     var dx = delta[0];
                     var dy = delta[1];
@@ -203,11 +195,7 @@ namespace RoguelikeProto.Scripts.LevelGenerator
             {
                 var room = queue.Dequeue();
 
-                foreach (var delta in new int[][]
-                         {
-                             new int[] {0, 1},
-                             new int[] {0, -1}, new int[] {1, 0}, new int[] {-1, 0}
-                         })
+                foreach (var delta in new[] {new[] {0, 1}, new[] {0, -1}, new[] {1, 0}, new[] {-1, 0}})
                 {
                     var dx = delta[0];
                     var dy = delta[1];
@@ -233,8 +221,7 @@ namespace RoguelikeProto.Scripts.LevelGenerator
         {
             _map[y][x].Exists = true;
             
-            foreach (var delta in new int[][] {new int[] {0, 1},
-                         new int[] {0, -1}, new int[] {1, 0}, new int[] {-1, 0}})
+            foreach (var delta in new[] {new[] {0, 1}, new[] {0, -1}, new[] {1, 0}, new[] {-1, 0}})
             {
                 var dx = delta[0];
                 var dy = delta[1];
@@ -256,7 +243,8 @@ namespace RoguelikeProto.Scripts.LevelGenerator
     public static class LevelGenerator
     {
         private static int _roomN = 20;
-        public static GameObject GetPrefabByGuid(string guid)
+
+        private static GameObject GetPrefabByGuid(string guid)
         {
             return AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
         }
