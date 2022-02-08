@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using RoguelikeProto.Scripts.Player;
 using UnityEngine;
@@ -7,7 +6,6 @@ namespace RoguelikeProto.Scripts.Bullet
 {
     public class BulletBehaviour : MonoBehaviour
     {
-        //[SerializeField] private Rigidbody2D rigidbody2D;
         [SerializeField] private BulletSettingsSo bulletSettings;
 
         public void Init(Vector3 shotDirection)

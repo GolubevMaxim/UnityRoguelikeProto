@@ -23,7 +23,7 @@ namespace RoguelikeProto.Scripts.Weapon
                     break;
             }
             var bullet = Instantiate(prefab, bulletSummonPoint, Quaternion.identity);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GameObject.Find("Player").GetComponent<Collider2D>());
             bullet.GetComponent<BulletBehaviour>().Init((target.transform.position - bulletSummonPoint).normalized);
         }
     }

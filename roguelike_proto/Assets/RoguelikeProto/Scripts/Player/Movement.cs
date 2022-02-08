@@ -27,7 +27,7 @@ namespace RoguelikeProto.Scripts.Player
         }
         private void Start()
         {
-            this._isRolling = false;
+            _isRolling = false;
             _onCoolDown = false;
             
             foreach (Transform child in transform)
@@ -53,12 +53,13 @@ namespace RoguelikeProto.Scripts.Player
 
         private void FixedUpdate()
         {
+            if (_isRolling) return;
+            
             var x = Input.GetAxis("Horizontal");
             var y = Input.GetAxis("Vertical");
-            if (_isRolling) return;
             var directionVec = Vector2.ClampMagnitude(new Vector2(x, y), 1f);
             _rigidbody2D.velocity = directionVec * playerSettings.speed;
-            }
+        }
 
         IEnumerator RollingCoroutine()
         {
