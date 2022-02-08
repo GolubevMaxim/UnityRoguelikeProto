@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Weapon
   - Bullet
+  - WallWithDoor
+  - Door
+  - Floor
   layers:
   - Default
   - TransparentFX
