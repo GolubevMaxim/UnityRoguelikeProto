@@ -11,9 +11,11 @@ namespace RoguelikeProto.Scripts.Player
         [SerializeField] private GameObject _aim;
         
         private Vector3 _rollingDirection;
-        private bool _isRolling; // true if player is currently rolling
+        public bool _isRolling; // true if player is currently rolling
         private bool _onCoolDown; // true if the roll ended, but cooldown time has not ran out
         private SpriteRenderer _playerSprite;
+        //private Vector3 _playerScale;
+        //private Vector3 _rollingScale;
 
         private Vector3 RollingDirection
         {
@@ -31,6 +33,9 @@ namespace RoguelikeProto.Scripts.Player
             foreach (Transform child in transform)
                 if (child.name.Equals("sprite"))
                     _playerSprite = child.GetComponent<SpriteRenderer>();
+            /*_playerScale = transform.localScale;
+            _rollingScale = _playerScale;
+            _rollingScale.y /= 10;*/
         }
 
         private void Update()
@@ -41,6 +46,7 @@ namespace RoguelikeProto.Scripts.Player
                 _isRolling = true;
                 _playerSprite.color = Color.black;
                 //_playerSprite.transform.Rotate(new Vector3(0, 0, 90));
+                //transform.localScale = _rollingScale;
                 StartCoroutine(RollingCoroutine());
             }
         }
@@ -60,6 +66,7 @@ namespace RoguelikeProto.Scripts.Player
             yield return new WaitForSeconds(playerSettings.rollTime);
             _isRolling = false;
             //_playerSprite.transform.Rotate(new Vector3(0, 0, -90));
+            //transform.localScale = _playerScale;
             
             _onCoolDown = true;
             var cooldownTimeCounter = playerSettings.rollCooldown;

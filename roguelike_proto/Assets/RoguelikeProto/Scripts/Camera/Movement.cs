@@ -10,6 +10,7 @@ namespace RoguelikeProto.Scripts.Camera
 
         private void FixedUpdate()
         {
+            if (_target == null) return;
             var targetPos = _target.transform.position;
             targetPos.z = -cameraSettings.distanceBetweenCameraAndWorld;
             targetPos += Vector3.up; // this is made because technically player's position is in his shadow so camera is moved down a bit
