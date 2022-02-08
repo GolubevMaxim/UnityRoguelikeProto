@@ -43,27 +43,22 @@ namespace RoguelikeProto.Scripts.Weapon
             switch (weapon)
             {
                 case Weapon.Ak47:
-                    _weapon = Instantiate(ak47Prefab, weaponSummonPoint.transform.position, Quaternion.identity);
-                    SetAngle();
-                    _weapon.transform.SetParent(transform);
+                    _weapon = Instantiate(ak47Prefab, weaponSummonPoint.transform.position, transform.rotation);
                     _currentWeapon = Weapon.Ak47;
                     break;
                 case Weapon.Pistol:
-                    _weapon = Instantiate(pistolPrefab, weaponSummonPoint.transform.position, Quaternion.identity);
-                    SetAngle();
-                    _weapon.transform.SetParent(transform);
+                    _weapon = Instantiate(pistolPrefab, weaponSummonPoint.transform.position, transform.rotation);
                     _currentWeapon = Weapon.Pistol;
                     break;
             }
+            
+            _weapon.transform.SetParent(transform);
         }
 
-        void SetAngle()
+        void FlipWeapom()
         {
             bool flip = GameObject.Find("Player").GetComponent<Flipper>()._flip;
-            _weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipX = flip;
-            float angle;
-            angle = Vector3.SignedAngle(flip ? Vector3.left : Vector3.right, aim.transform.position - transform.position, Vector3.forward);
-            _weapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+            _weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = flip;
         }
 
         public enum Weapon

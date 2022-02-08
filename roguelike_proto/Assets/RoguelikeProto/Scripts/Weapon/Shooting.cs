@@ -11,6 +11,7 @@ namespace RoguelikeProto.Scripts.Weapon
         {
             Vector3 bulletSummonPoint = Vector3.zero;
             GiveWeapon.Weapon currentWeapon = GetComponent<GiveWeapon>()._currentWeapon;
+            
             switch (currentWeapon)
             {
                 case GiveWeapon.Weapon.None:
@@ -22,8 +23,14 @@ namespace RoguelikeProto.Scripts.Weapon
                     bulletSummonPoint = transform.Find("pistol(Clone)").Find("BulletSummonPoint").position;
                     break;
             }
+            
             var bullet = Instantiate(prefab, bulletSummonPoint, Quaternion.identity);
             Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GameObject.Find("Player").GetComponent<Collider2D>());
+            foreach (var floor in GameObject.FindGameObjectsWithTag("Floor"))
+            {
+                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), floor.GetComponent<Collider2D>());
+            } 
+
             bullet.GetComponent<BulletBehaviour>().Init((target.transform.position - bulletSummonPoint).normalized);
         }
     }
