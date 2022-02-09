@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fdeb259f3db6564cb0603523db460c1, type: 3}
-  m_Name: Bullet settings
+  m_Name: ak47 Bullet settings
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 3
+  speed: 7
   lifetime: 10
+  random: 0.3

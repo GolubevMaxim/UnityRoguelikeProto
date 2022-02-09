@@ -55,12 +55,6 @@ namespace RoguelikeProto.Scripts.Weapon
             _weapon.transform.SetParent(transform);
         }
 
-        void FlipWeapom()
-        {
-            bool flip = GameObject.Find("Player").GetComponent<Flipper>()._flip;
-            _weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = flip;
-        }
-
         public enum Weapon
         { None = 0, Ak47 = 1, Pistol = 2 }
     }

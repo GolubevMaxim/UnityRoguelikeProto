@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aim: {fileID: 88125794}
+  ak47Settings: {fileID: 11400000, guid: 2e63b371f9868284ab7fb1a060e8c3ed, type: 2}
+  pistolSettings: {fileID: 11400000, guid: fb415f10d354c274e921e2b977f1b25b, type: 2}
 --- !u!114 &331719549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +551,7 @@ GameObject:
   - component: {fileID: 807773114}
   - component: {fileID: 807773115}
   - component: {fileID: 807773116}
+  - component: {fileID: 807773117}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -597,7 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3093362da84e0647a2015497a195609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7395091551468431255, guid: 06b6752f0ae35804484a1b32d3623578, type: 3}
+  ak47BulletPrefab: {fileID: 7395091551468431255, guid: 06b6752f0ae35804484a1b32d3623578, type: 3}
+  pistolBulletPrefab: {fileID: 7395091551468431255, guid: c32e0ff191d3b7d4db542e96996ebbb7, type: 3}
 --- !u!114 &807773116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,6 +619,21 @@ MonoBehaviour:
   weaponSummonPoint: {fileID: 1477507847}
   aim: {fileID: 88125794}
   _currentWeapon: 0
+--- !u!114 &807773117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807773112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3909caa73bd48143be05c830fb24bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ak47Settings: {fileID: 11400000, guid: 2e63b371f9868284ab7fb1a060e8c3ed, type: 2}
+  pistolSettings: {fileID: 11400000, guid: fb415f10d354c274e921e2b977f1b25b, type: 2}
+  currentBulletsCount: 0
 --- !u!1 &1477507847
 GameObject:
   m_ObjectHideFlags: 0
