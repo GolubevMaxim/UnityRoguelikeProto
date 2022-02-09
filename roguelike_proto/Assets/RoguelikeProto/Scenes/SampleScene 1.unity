@@ -617,9 +617,6 @@ MonoBehaviour:
   ak47Prefab: {fileID: 616232926500830308, guid: 0ee27146b4d81794bae08614b6f55523, type: 3}
   pistolPrefab: {fileID: 4323040508728630468, guid: 9897218ed6e055848bc86b9c452a859a, type: 3}
   weaponSummonPoint: {fileID: 1477507847}
-  aim: {fileID: 88125794}
-  ak47Settings: {fileID: 11400000, guid: 2e63b371f9868284ab7fb1a060e8c3ed, type: 2}
-  pistolSettings: {fileID: 11400000, guid: fb415f10d354c274e921e2b977f1b25b, type: 2}
   _currentWeapon: 0
 --- !u!114 &807773117
 MonoBehaviour:

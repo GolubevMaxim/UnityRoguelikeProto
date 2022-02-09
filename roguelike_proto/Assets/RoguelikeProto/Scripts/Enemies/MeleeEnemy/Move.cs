@@ -12,7 +12,7 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
         private void MoveNpcInPlayerDirection()
         {
             _npc.transform.Translate((_player.transform.position - _npc.transform.position)
-                                     * enemySpeed * Time.deltaTime);
+                                     * (enemySpeed * Time.deltaTime));
         }
 
         protected override void Update()

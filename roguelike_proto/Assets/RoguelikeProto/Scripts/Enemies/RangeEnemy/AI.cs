@@ -7,7 +7,6 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         private Transform _player;
 
         private State _state;
-        
         void Start()
         {
             _player = GameObject.FindWithTag("Player").transform;

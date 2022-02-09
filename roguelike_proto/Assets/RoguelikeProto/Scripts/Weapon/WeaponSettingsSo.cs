@@ -8,5 +8,7 @@ namespace RoguelikeProto.Scripts.Weapon
         [field: SerializeField] public float cooldown;
         [field: SerializeField] public int storage;
         [field: SerializeField] public float rechargeTime;
+
+        [field: SerializeField] public GameObject bulletPrefab;
     }
 }

@@ -1,3 +1,4 @@
+using RoguelikeProto.Scripts.Weapon;
 using UnityEngine;
 
 namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
@@ -12,7 +13,13 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 
         private void AttackNpc()
         {
-            Debug.Log("Attack");
+            foreach (Transform child in _npc)
+            {
+                if (child.CompareTag("Weapon"))
+                {
+                    child.GetComponent<EnemyShooting>().Shoot(_player.gameObject);
+                }   
+            }
         }
 
         protected override void Enter()

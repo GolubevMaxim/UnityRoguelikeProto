@@ -8,9 +8,7 @@ namespace RoguelikeProto.Scripts.Weapon
         [SerializeField] private GameObject ak47Prefab;
         [SerializeField] private GameObject pistolPrefab;
         [SerializeField] private GameObject weaponSummonPoint;
-        [SerializeField] private GameObject aim;
-        [SerializeField] private WeaponSettingsSo ak47Settings;
-        [SerializeField] private WeaponSettingsSo pistolSettings;
+        
         private GameObject _weapon;
         public Weapon _currentWeapon;
         void Start()
@@ -46,18 +44,16 @@ namespace RoguelikeProto.Scripts.Weapon
             {
                 case Weapon.Ak47:
                     _weapon = Instantiate(ak47Prefab, weaponSummonPoint.transform.position, transform.rotation);
-                    correctWeaponFlip(_weapon);
                     _currentWeapon = Weapon.Ak47;
-                    transform.GetComponent<Storage>().Start();
                     break;
                 case Weapon.Pistol:
                     _weapon = Instantiate(pistolPrefab, weaponSummonPoint.transform.position, transform.rotation);
-                    correctWeaponFlip(_weapon);
                     _currentWeapon = Weapon.Pistol;
-                    transform.GetComponent<Storage>().Start();
                     break;
             }
-            
+
+            // correctWeaponFlip(_weapon);
+            transform.GetComponent<Storage>().Start();
             _weapon.transform.SetParent(transform);
         }
 

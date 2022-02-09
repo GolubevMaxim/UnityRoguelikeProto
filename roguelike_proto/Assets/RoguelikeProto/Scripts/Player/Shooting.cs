@@ -16,11 +16,6 @@ namespace RoguelikeProto.Scripts.Player
         private bool _isOnReload = false;
         private SpriteRenderer weaponSprite;
 
-        private void Awake()
-        {
-            
-        }
-
         void Update()
         {
             Transform weapon = transform.Find("Weapon");

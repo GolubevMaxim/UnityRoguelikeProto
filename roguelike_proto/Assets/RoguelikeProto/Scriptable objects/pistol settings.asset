@@ -15,3 +15,4 @@ MonoBehaviour:
   cooldown: 0.4
   storage: 12
   rechargeTime: 2.5
+  bulletPrefab: {fileID: 7395091551468431255, guid: c32e0ff191d3b7d4db542e96996ebbb7, type: 3}

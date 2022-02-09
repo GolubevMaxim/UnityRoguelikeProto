@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90238eb10627e554082c46228d6f3bb5, type: 3}
-  m_Name: ak47 settings
+  m_Name: RangeSpitWeapon
   m_EditorClassIdentifier: 
-  cooldown: 0.1
-  storage: 30
-  rechargeTime: 5
-  bulletPrefab: {fileID: 7395091551468431255, guid: 06b6752f0ae35804484a1b32d3623578, type: 3}
+  cooldown: 1
+  storage: 100
+  rechargeTime: 0
+  bulletPrefab: {fileID: 7464529883029980844, guid: 746c5c13cc1bb214bb7a0386496d683c, type: 3}

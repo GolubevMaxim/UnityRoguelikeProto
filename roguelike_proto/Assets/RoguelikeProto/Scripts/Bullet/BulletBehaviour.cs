@@ -1,5 +1,6 @@
 using System.Collections;
 using RoguelikeProto.Scripts.Player;
+using UnityEditor;
 using UnityEngine;
 using Health = RoguelikeProto.Scripts.Enemies.Health;
 
@@ -30,11 +31,12 @@ namespace RoguelikeProto.Scripts.Bullet
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.CompareTag($"Enemy"))
-                col.gameObject.GetComponent<Health>().currentHealth -= bulletSettings.damage;
+                col.gameObject.GetComponent<Enemies.Health>().currentHealth -= bulletSettings.damage;
             if (col.gameObject.CompareTag($"Player"))
             {
-                if(!col.gameObject.GetComponent<Movement>()._isRolling)
-                    col.gameObject.GetComponent<Health>().currentHealth -= bulletSettings.damage;
+                Debug.Log(col.transform.name);
+                if (!col.gameObject.GetComponent<Movement>()._isRolling)
+                   col.gameObject.GetComponent<Player.Health>().currentHealth -= bulletSettings.damage;
             }
 
             Destroy(gameObject);
