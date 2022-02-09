@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using RoguelikeProto.Scripts.Bullet;
 using RoguelikeProto.Scripts.Weapon;
@@ -13,6 +14,12 @@ namespace RoguelikeProto.Scripts.Player
         private bool _isShooting = false;
         private bool _isOnCooldown = false;
         private bool _isOnReload = false;
+        private SpriteRenderer weaponSprite;
+
+        private void Awake()
+        {
+            
+        }
 
         void Update()
         {
@@ -57,8 +64,17 @@ namespace RoguelikeProto.Scripts.Player
 
         IEnumerator ReloadingCoroutine(WeaponSettingsSo currentSettings)
         {
+            weaponSprite = GameObject.FindWithTag("Weapon").transform.Find("sprite").GetComponent<SpriteRenderer>();
+            weaponSprite.color = Color.red;
             Debug.Log("Recharging the weapon...");
-            yield return new WaitForSeconds(currentSettings.rechargeTime);
+            float rechargeTimeCounter = currentSettings.rechargeTime;
+            while (rechargeTimeCounter > 0)
+            {
+                float t = (currentSettings.rechargeTime - rechargeTimeCounter) / currentSettings.rechargeTime;
+                weaponSprite.color = Color.Lerp(Color.red, Color.white, t);
+                rechargeTimeCounter -= Time.deltaTime;
+                yield return null;
+            }
             transform.Find("Weapon").GetComponent<Storage>().currentBulletsCount = currentSettings.storage;
             _isOnReload = false;
         }

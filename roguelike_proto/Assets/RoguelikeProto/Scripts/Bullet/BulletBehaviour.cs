@@ -1,4 +1,5 @@
 using System.Collections;
+using RoguelikeProto.Scripts.Player;
 using UnityEngine;
 using Health = RoguelikeProto.Scripts.Enemies.Health;
 
@@ -31,7 +32,11 @@ namespace RoguelikeProto.Scripts.Bullet
             if (col.gameObject.CompareTag($"Enemy"))
                 col.gameObject.GetComponent<Health>().currentHealth -= bulletSettings.damage;
             if (col.gameObject.CompareTag($"Player"))
-                col.gameObject.GetComponent<Health>().currentHealth -= bulletSettings.damage;
+            {
+                if(!col.gameObject.GetComponent<Movement>()._isRolling)
+                    col.gameObject.GetComponent<Health>().currentHealth -= bulletSettings.damage;
+            }
+
             Destroy(gameObject);
         }
     }

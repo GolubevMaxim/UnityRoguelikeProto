@@ -9,7 +9,7 @@ namespace RoguelikeProto.Scripts.Weapon
         [SerializeField] private WeaponSettingsSo pistolSettings;
         public int currentBulletsCount;
 
-        void Start()
+        public void Start()
         {
             GiveWeapon.Weapon currentWeapon = GetComponent<GiveWeapon>()._currentWeapon;
             //TODO replace currentWeapon into player settings
