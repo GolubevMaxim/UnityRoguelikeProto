@@ -49,7 +49,6 @@ namespace RoguelikeProto.Scripts.Enemies
         private void Start()
         {
             _doorCloser = transform.GetComponentInChildren<DoorCloser>();
-            Debug.Log(_doorCloser.aliveEnemiesCount);
             _enemyObjects = LoadEnemyObj();
             _summonPoints = new List<Vector2>();
             _enemyQueue = new Queue<GameObject>();

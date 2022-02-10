@@ -19,7 +19,6 @@ namespace RoguelikeProto.Scripts.Player
         void Update()
         {
             Transform weapon = transform.Find("Weapon");
-            Debug.Log(weapon.GetComponent<Storage>().currentBulletsCount);
             GiveWeapon.Weapon currentWeapon = weapon.GetComponent<GiveWeapon>()._currentWeapon;
             WeaponSettingsSo currentSettings = null;
             switch (currentWeapon)
@@ -61,7 +60,6 @@ namespace RoguelikeProto.Scripts.Player
         {
             weaponSprite = GameObject.FindWithTag("Weapon").transform.Find("sprite").GetComponent<SpriteRenderer>();
             weaponSprite.color = Color.red;
-            Debug.Log("Recharging the weapon...");
             float rechargeTimeCounter = currentSettings.rechargeTime;
             while (rechargeTimeCounter > 0)
             {
