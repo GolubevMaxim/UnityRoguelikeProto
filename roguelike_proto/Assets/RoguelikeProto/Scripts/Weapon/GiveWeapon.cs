@@ -59,8 +59,8 @@ namespace RoguelikeProto.Scripts.Weapon
 
         void CorrectWeaponFlip(GameObject weapon)
         {
-            if(Input.mousePosition.x < Screen.width / 2f)
-                weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = true;
+            weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = 
+                transform.parent.GetComponent<Flipper>().flip;
         }
 
         public enum Weapon

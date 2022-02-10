@@ -1,34 +1,30 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RoguelikeProto.Scripts.Player
 {
     public class Flipper : MonoBehaviour
     {
         [SerializeField] private GameObject weapon;
-        public bool _flip;
-
-        private void Awake()
-        {
-            _flip = false;
-        }
+        public bool flip;
 
         void FixedUpdate()
         {
-            _flip = Screen.width / 2f > Input.mousePosition.x;
+            flip = Screen.width / 2f > Input.mousePosition.x;
 
             foreach (Transform child in transform)
             {
                 if (child.name == "sprite")
                 {
-                    child.GetComponent<SpriteRenderer>().flipX = _flip;
+                    child.GetComponent<SpriteRenderer>().flipX = flip;
                 }
             }
 
             var currentScale = weapon.transform.localScale;
             var newScale = currentScale;
 
-            if (_flip && currentScale.y > 0 || !_flip && currentScale.y < 0)
+            if (flip && currentScale.y > 0 || !flip && currentScale.y < 0)
             {
                 newScale.y *= -1;
             }
@@ -39,7 +35,7 @@ namespace RoguelikeProto.Scripts.Player
             var currentPosition = weapon.transform.localPosition;
             var newPosition = currentPosition;
 
-            newPosition.x = _flip ? -0.65f : 0.65f;
+            newPosition.x = flip ? -0.65f : 0.65f;
 
             weapon.transform.localPosition = newPosition;
         }
