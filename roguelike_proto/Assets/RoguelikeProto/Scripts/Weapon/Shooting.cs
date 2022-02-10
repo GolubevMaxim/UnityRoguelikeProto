@@ -31,12 +31,7 @@ namespace RoguelikeProto.Scripts.Weapon
             }
             
             var bullet = Instantiate(bulletPrefab, bulletSummonPoint, Quaternion.identity);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GameObject.Find("Player").GetComponent<Collider2D>());
-            foreach (var floor in GameObject.FindGameObjectsWithTag("Floor"))
-            {
-                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), floor.GetComponent<Collider2D>());
-            } 
-
+            
             bullet.GetComponent<BulletBehaviour>().Init((target.transform.position - bulletSummonPoint).normalized);
         }
     }

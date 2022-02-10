@@ -30,15 +30,34 @@ namespace RoguelikeProto.Scripts.Bullet
 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            if (col.CompareTag("Bullet") || col.CompareTag($"EnemyBullet") || col.CompareTag("Floor"))
+            {
+                return;
+            }
+            
             if (col.gameObject.CompareTag($"Enemy"))
+            {
+                if (CompareTag($"EnemyBullet"))
+                {
+                    return;
+                }
                 col.gameObject.GetComponent<Enemies.Health>().currentHealth -= bulletSettings.damage;
+            }
+            
+
             if (col.gameObject.CompareTag($"Player"))
             {
-                Debug.Log(col.transform.name);
+                if (CompareTag("Bullet"))
+                {
+                    return;
+                }
+             
                 if (!col.gameObject.GetComponent<Movement>()._isRolling)
-                   col.gameObject.GetComponent<Player.Health>().currentHealth -= bulletSettings.damage;
+                {
+                    col.gameObject.GetComponent<Player.Health>().currentHealth -= bulletSettings.damage;
+                }
             }
-
+            
             Destroy(gameObject);
         }
     }

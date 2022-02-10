@@ -7,6 +7,12 @@ namespace RoguelikeProto.Scripts.Player
     {
         [SerializeField] private GameObject weapon;
         public bool _flip;
+
+        private void Awake()
+        {
+            _flip = false;
+        }
+
         void FixedUpdate()
         {
             _flip = Screen.width / 2f > Input.mousePosition.x;

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ak47 Bullet settings
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 7
+  speed: 20
   lifetime: 10
   random: 0.3

@@ -52,14 +52,13 @@ namespace RoguelikeProto.Scripts.Weapon
                     break;
             }
 
-            // correctWeaponFlip(_weapon);
+            CorrectWeaponFlip(_weapon);
             transform.GetComponent<Storage>().Start();
             _weapon.transform.SetParent(transform);
         }
 
-        void correctWeaponFlip(GameObject weapon)
+        void CorrectWeaponFlip(GameObject weapon)
         {
-            //if (weapon.transform.rotation.eulerAngles.z is > 90 and < 270)
             if(Input.mousePosition.x < Screen.width / 2f)
                 weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = true;
         }
