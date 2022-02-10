@@ -15,6 +15,10 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
 
         void Update()
         {
+            if (_player == null)
+            {
+                return;
+            }
             _state = _state.Process();
         }
     }

@@ -15,6 +15,11 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 
         void Update()
         {
+            if (_player == null)
+            {
+                return;
+            }
+
             _state = _state.Process();
         }
     }
