@@ -63,6 +63,7 @@ namespace RoguelikeProto.Scripts.Player
 
         IEnumerator RollingCoroutine()
         {
+            _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.AddForce(RollingDirection, ForceMode2D.Impulse);
             yield return new WaitForSeconds(playerSettings.rollTime);
             _isRolling = false;
