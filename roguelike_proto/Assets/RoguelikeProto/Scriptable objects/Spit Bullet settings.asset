@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdeb259f3db6564cb0603523db460c1, type: 3}
   m_Name: Spit Bullet settings
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 2
   speed: 3
   lifetime: 5
   random: 0

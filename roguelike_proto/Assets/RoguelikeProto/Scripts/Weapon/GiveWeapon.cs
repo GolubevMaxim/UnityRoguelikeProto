@@ -27,6 +27,7 @@ namespace RoguelikeProto.Scripts.Weapon
 
         void gettingWeapon(Weapon weapon)
         {
+            if (weapon.Equals(_currentWeapon)) return;
             //destroying old weapon
             switch (_currentWeapon)
             {
@@ -51,16 +52,18 @@ namespace RoguelikeProto.Scripts.Weapon
                     _currentWeapon = Weapon.Pistol;
                     break;
             }
-
-            CorrectWeaponFlip(_weapon);
-            transform.GetComponent<Storage>().Start();
+            
             _weapon.transform.SetParent(transform);
+            CorrectWeaponFlip(_weapon);
         }
 
         void CorrectWeaponFlip(GameObject weapon)
         {
-            weapon.transform.Find("sprite").GetComponent<SpriteRenderer>().flipY = 
-                transform.parent.GetComponent<Flipper>().flip;
+            if (GameObject.FindWithTag("Player").GetComponent<Flipper>().flip)
+            {
+                var oldScale = weapon.transform.localScale;
+                weapon.transform.localScale = new Vector3(oldScale.x, -oldScale.y, oldScale.z);
+            }
         }
 
         public enum Weapon

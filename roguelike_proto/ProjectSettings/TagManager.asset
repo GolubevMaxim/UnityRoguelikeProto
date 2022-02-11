@@ -9,6 +9,7 @@ TagManager:
   - WallWithDoor
   - Door
   - Floor
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: DynamicObjects
     uniqueID: 2274834187
+    locked: 0
+  - name: UI
+    uniqueID: 2091567831
     locked: 0

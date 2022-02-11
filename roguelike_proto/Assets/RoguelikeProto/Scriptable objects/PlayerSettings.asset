@@ -15,5 +15,5 @@ MonoBehaviour:
   speed: 10
   maxHealth: 10
   rollTime: 0.75
-  rollDistance: 10
+  rollDistance: 20
   rollCooldown: 1

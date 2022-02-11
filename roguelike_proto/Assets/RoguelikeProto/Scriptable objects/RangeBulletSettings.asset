@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdeb259f3db6564cb0603523db460c1, type: 3}
   m_Name: RangeBulletSettings
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 1
   speed: 7.5
   lifetime: 5
   random: 0
