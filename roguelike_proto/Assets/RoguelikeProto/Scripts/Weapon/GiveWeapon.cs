@@ -22,7 +22,7 @@ namespace RoguelikeProto.Scripts.Weapon
         {
 
             var scroll = Input.GetAxis("Mouse ScrollWheel");
-            Debug.Log(scroll);
+
             if (Math.Abs(scroll) > 0.1)
             {
                 if (_currentWeapon == Weapon.Ak47)
