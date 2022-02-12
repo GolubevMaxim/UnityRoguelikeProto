@@ -4,9 +4,7 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 {
     public class State
     {
-        protected float attackRange = 12f;
-        protected float enemySpeed = 1f;
-        
+
         public enum STATE
         {
             Move,
@@ -25,12 +23,14 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         protected Transform _player;
         protected Transform _npc;
         protected State NextState;
+        protected EnemySettingsSo _enemySettings;
 
-        protected State(Transform player, Transform npc)
+        protected State(Transform player, Transform npc, EnemySettingsSo enemySettings)
         {
             stage = EVENT.Enter;
             _npc = npc;
             _player = player;
+            _enemySettings = enemySettings;
         }
 
         protected virtual void Enter()

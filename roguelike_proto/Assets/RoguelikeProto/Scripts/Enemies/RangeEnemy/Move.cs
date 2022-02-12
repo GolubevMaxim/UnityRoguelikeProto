@@ -4,7 +4,7 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 {
     public class Move : State
     {
-        public Move(Transform player, Transform npc) : base(player, npc)
+        public Move(Transform player, Transform npc, EnemySettingsSo enemySettings) : base(player, npc, enemySettings)
         {
             Name = STATE.Move;
         }
@@ -12,14 +12,14 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         private void MoveNpcInPlayerDirection()
         {
             _npc.transform.Translate((_player.transform.position - _npc.transform.position) 
-                                     * (enemySpeed * Time.deltaTime));
+                                     * (_enemySettings.speed * Time.deltaTime));
         }
 
         protected override void Update()
         {
-            if (Vector2.Distance(_npc.transform.position, _player.transform.position) < attackRange)
+            if (Vector2.Distance(_npc.transform.position, _player.transform.position) < _enemySettings.attackRange)
             {
-                NextState = new Attack(_player, _npc);
+                NextState = new Attack(_player, _npc, _enemySettings);
                 stage = EVENT.Exit;
             }
             else

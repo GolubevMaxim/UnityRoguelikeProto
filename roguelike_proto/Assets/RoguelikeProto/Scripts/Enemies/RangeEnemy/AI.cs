@@ -4,13 +4,15 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 {
     public class AI : MonoBehaviour
     {
+        [SerializeField] private EnemySettingsSo enemySettings;
         private Transform _player;
 
         private State _state;
         void Start()
         {
             _player = GameObject.FindWithTag("Player").transform;
-            _state = new Move(_player, this.transform);
+            _state = new Move(_player, this.transform, enemySettings);
+            // _state.EnemySettings = enemySettings;
         }
 
         void Update()
