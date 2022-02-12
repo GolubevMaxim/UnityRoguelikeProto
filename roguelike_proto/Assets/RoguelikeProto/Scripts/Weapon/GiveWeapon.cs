@@ -1,5 +1,6 @@
 using System;
 using RoguelikeProto.Scripts.Player;
+using RoguelikeProto.Scripts.UI;
 using UnityEngine;
 
 namespace RoguelikeProto.Scripts.Weapon
@@ -20,7 +21,7 @@ namespace RoguelikeProto.Scripts.Weapon
         
         void Update()
         {
-
+            if (PauseMenu.OnPause) return;
             var scroll = Input.GetAxis("Mouse ScrollWheel");
 
             if (Math.Abs(scroll) > 0.1)
