@@ -5,7 +5,7 @@ namespace RoguelikeProto.Scripts.UI
 {
     public class PauseMenu : MonoBehaviour
     {
-        private static bool _onPause = false;
+        public static bool OnPause = false;
 
         [SerializeField] private GameObject pauseScreen;
         
@@ -13,7 +13,7 @@ namespace RoguelikeProto.Scripts.UI
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (_onPause) Resume();
+                if (OnPause) Resume();
                 else Pause();
             }
         }
@@ -22,13 +22,13 @@ namespace RoguelikeProto.Scripts.UI
         {
             pauseScreen.SetActive(false);
             Time.timeScale = 1;
-            _onPause = false;
+            OnPause = false;
         }
 
         public void Restart()
         {
             Time.timeScale = 1;
-            _onPause = false;
+            OnPause = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -42,7 +42,7 @@ namespace RoguelikeProto.Scripts.UI
         {
             pauseScreen.SetActive(true);
             Time.timeScale = 0;
-            _onPause = true;
+            OnPause = true;
         }
     }
 }
