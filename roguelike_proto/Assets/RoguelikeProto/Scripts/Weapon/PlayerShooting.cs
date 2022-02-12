@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using RoguelikeProto.Scripts.Bullet;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RoguelikeProto.Scripts.Weapon
 {
@@ -10,11 +11,11 @@ namespace RoguelikeProto.Scripts.Weapon
         [SerializeField] private WeaponSettingsSo settings;
         private bool _onCooldown;
         private bool _onReload;
-        private int _currentBulletsCount;
+        public int currentBulletsCount;
 
         private void Start()
         {
-            _currentBulletsCount = settings.storage;
+            currentBulletsCount = settings.storage;
         }
 
         private Vector3 GetBulletSummonPoint()
@@ -41,13 +42,13 @@ namespace RoguelikeProto.Scripts.Weapon
                 rechargeTimeCounter -= Time.deltaTime;
                 yield return null;
             }
-            _currentBulletsCount = currentSettings.storage;
+            currentBulletsCount = currentSettings.storage;
             _onReload = false;
         }
 
         public void Shoot(GameObject target)
         {
-            if (_currentBulletsCount <= 0)
+            if (currentBulletsCount <= 0)
             {
                 _onReload = true;
                 StartCoroutine(ReloadingCoroutine(settings));
@@ -78,7 +79,7 @@ namespace RoguelikeProto.Scripts.Weapon
             var bullet = Instantiate(bulletPrefab, bulletSummonPoint, Quaternion.identity);
 
             bullet.GetComponent<BulletBehaviour>().Init((target.transform.position - bulletSummonPoint).normalized); 
-            _currentBulletsCount--;
+            currentBulletsCount--;
             StartCoroutine(CooldownCoroutine());
         }
     }

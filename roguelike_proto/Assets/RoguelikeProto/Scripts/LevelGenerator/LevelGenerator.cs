@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEditor;
@@ -240,7 +241,7 @@ namespace RoguelikeProto.Scripts.LevelGenerator
         }
     }
 
-    public static class LevelGenerator
+    public class LevelGenerator : MonoBehaviour
     {
         private static int _roomN = 20;
 
@@ -248,8 +249,6 @@ namespace RoguelikeProto.Scripts.LevelGenerator
         {
             return AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
         }
-        
-        [RuntimeInitializeOnLoadMethod]
         private static void Generate()
         {
             string[] guids = AssetDatabase.FindAssets("t:prefab", new[] {"Assets/RoguelikeProto/Prefabs/Rooms"});
@@ -282,6 +281,11 @@ namespace RoguelikeProto.Scripts.LevelGenerator
                     }
                 }
             } 
+        }
+
+        private void Awake()
+        {
+            Generate();
         }
     }
 }
