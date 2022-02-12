@@ -1,11 +1,10 @@
+using RoguelikeProto.Scripts.Weapon;
 using UnityEngine;
 
 namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
 {
     public class State
-    {
-        protected float attackRange = 5f;
-        protected float enemySpeed = 2f;
+    { 
         public enum STATE
         {
             Move,
@@ -19,14 +18,17 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
             Exit
         }
 
+        protected readonly EnemySettingsSo EnemySettings;
+        
         protected STATE Name;
         protected EVENT stage;
         protected Transform _player;
         protected Transform _npc;
         protected State NextState;
 
-        protected State(Transform player, Transform npc)
+        protected State(Transform player, Transform npc, EnemySettingsSo enemySettings)
         {
+            EnemySettings = enemySettings;
             stage = EVENT.Enter;
             _npc = npc;
             _player = player;

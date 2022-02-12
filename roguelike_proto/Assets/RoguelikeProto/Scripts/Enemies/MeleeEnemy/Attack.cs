@@ -6,7 +6,8 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
     public class Attack : State
     {
         private float _enterTime;
-        public Attack(Transform player, Transform npc) : base(player, npc)
+        public Attack(Transform player, Transform npc, EnemySettingsSo enemySettingsSo) 
+            : base(player, npc, enemySettingsSo)
         {
             Name = STATE.Attack;
         }
@@ -32,9 +33,10 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
         protected override void Update()
         {
             if ((Time.time - _enterTime) > 1 &&
-                (Vector2.Distance(_npc.transform.position, _player.transform.position) > attackRange))
+                (Vector2.Distance(_npc.transform.position, _player.transform.position)
+                 > EnemySettings.attackRange))
             {
-                NextState = new Move(_player, _npc);
+                NextState = new Move(_player, _npc, EnemySettings);
                 stage = EVENT.Exit;
             }
             else

@@ -5,11 +5,11 @@ namespace RoguelikeProto.Scripts.Enemies
     public class Health : MonoBehaviour
     {
         public float currentHealth;
-        [SerializeField] private float maxHealth;
+        [SerializeField] private EnemySettingsSo _enemySettings;
 
         private void Start()
         {
-            currentHealth = maxHealth;
+            currentHealth = _enemySettings.maxHealth;
         }
 
         private void FixedUpdate()

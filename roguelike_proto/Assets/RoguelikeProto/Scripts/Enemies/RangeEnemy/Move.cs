@@ -11,7 +11,7 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
 
         private void MoveNpcInPlayerDirection()
         {
-            _npc.transform.Translate((_player.transform.position - _npc.transform.position) 
+            _npc.transform.Translate((_player.transform.position - _npc.transform.position).normalized 
                                      * (EnemySettings.speed * Time.deltaTime));
         }
 

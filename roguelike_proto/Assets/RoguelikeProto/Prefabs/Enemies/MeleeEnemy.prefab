@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d2bc4acf7c81948944c6e38b6c9a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemySettings: {fileID: 11400000, guid: cf2dbe96adbe1b644a956a064eaa08f2, type: 2}
 --- !u!114 &8152744063477594967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
+  _enemySettings: {fileID: 11400000, guid: cf2dbe96adbe1b644a956a064eaa08f2, type: 2}
 --- !u!50 &2164579997333438797
 Rigidbody2D:
   serializedVersion: 4

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  _enemySettings: {fileID: 11400000, guid: c9a4399f1c9d3904591cbf921044d5cf, type: 2}
 --- !u!50 &-1665591489860722932
 Rigidbody2D:
   serializedVersion: 4

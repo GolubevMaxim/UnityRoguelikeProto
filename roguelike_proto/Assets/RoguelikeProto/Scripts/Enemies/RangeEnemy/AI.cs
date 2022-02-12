@@ -12,7 +12,6 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         {
             _player = GameObject.FindWithTag("Player").transform;
             _state = new Move(_player, this.transform, enemySettings);
-            // _state.EnemySettings = enemySettings;
         }
 
         void Update()
