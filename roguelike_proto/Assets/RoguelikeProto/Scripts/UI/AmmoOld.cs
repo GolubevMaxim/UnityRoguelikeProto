@@ -9,19 +9,27 @@ namespace RoguelikeProto.Scripts.UI
         [SerializeField] private GameObject _weapon;
         void Update()
         {
-            if (_weapon == null) return;
-        
-            var ammo = 0;
-            
-            foreach (Transform child in _weapon.transform)
+            if (_weapon == null) GetComponent<Text>().text = "";
+            else
             {
-                if (child.CompareTag("Weapon"))
-                {
-                    ammo = child.GetComponent<PlayerShooting>().currentBulletsCount;
-                }
-            }
+                var ammo = 0;
+                bool onReload = false;
 
-            GetComponent<Text>().text = "Ammo: " + ammo;
+                foreach (Transform child in _weapon.transform)
+                {
+                    if (child.CompareTag("Weapon"))
+                    {
+                        var component = child.GetComponent<PlayerShooting>();
+                        ammo = component.currentBulletsCount;
+                        onReload = component._onReload;
+                    }
+                }
+
+                if (!onReload)
+                    GetComponent<Text>().text = " Ammo: " + ammo;
+                else
+                    GetComponent<Text>().text = " Reloading... ";
+            }
         }
     }
 }

@@ -40,8 +40,13 @@ namespace RoguelikeProto.Scripts.Player
                 var x = Input.GetAxis("Horizontal");
                 var y = Input.GetAxis("Vertical");
                 var directionVec = Vector2.ClampMagnitude(new Vector2(x, y), 1f);
-                
-                RollingDirection = directionVec * playerSettings.rollDistance;
+                if (!directionVec.Equals(Vector3.zero))
+                {
+                    directionVec.Normalize();
+                    RollingDirection = directionVec * playerSettings.rollDistance;
+                }
+                else
+                    return;
                 _isRolling = true;
                 _playerSprite.color = Color.black;
                 StartCoroutine(RollingCoroutine());
@@ -65,14 +70,25 @@ namespace RoguelikeProto.Scripts.Player
             _isRolling = false;
             _onCoolDown = true;
             var cooldownTimeCounter = playerSettings.rollCooldown;
+            var isVisible = true;
+            int counter = 0;
             while (cooldownTimeCounter > 0)
             {
+                if (counter >= 10) // every 10 frames sprite visibility changes
+                {
+                    isVisible = !isVisible;
+                    counter = 0;
+                }
                 float colorChangeStep =
                     (playerSettings.rollCooldown - cooldownTimeCounter) / playerSettings.rollCooldown;
                 _playerSprite.color = Color.Lerp(Color.black, Color.white, colorChangeStep);
+                _playerSprite.enabled = isVisible; 
                 cooldownTimeCounter -= Time.deltaTime;
+                counter++;
                 yield return null;
             }
+            _playerSprite.enabled = true;
+            _playerSprite.color = Color.white;
             _onCoolDown = false;
         }
     }

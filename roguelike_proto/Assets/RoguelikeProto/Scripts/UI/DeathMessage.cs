@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 namespace RoguelikeProto.Scripts.UI
 {
-    public class HealthBarOld : MonoBehaviour
+    public class DeathMessage : MonoBehaviour
     {
         [SerializeField] private GameObject player;
         void Update()
         {
-            if (player == null) GetComponent<Text>().text = "";
-            else GetComponent<Text>().text = " Health: " + player.GetComponent<Health>().currentHealth;
+            if (player == null)
+                GetComponent<Text>().text = "YOU DIED!";
+            else
+                GetComponent<Text>().text = "";
         }
     }
 }

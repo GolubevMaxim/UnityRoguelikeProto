@@ -10,7 +10,7 @@ namespace RoguelikeProto.Scripts.Weapon
     {
         [SerializeField] private WeaponSettingsSo settings;
         private bool _onCooldown;
-        private bool _onReload;
+        public bool _onReload;
         public int currentBulletsCount;
 
         private void Start()
@@ -35,13 +35,24 @@ namespace RoguelikeProto.Scripts.Weapon
             var weaponSprite = transform.Find("sprite").GetComponent<SpriteRenderer>();
             weaponSprite.color = Color.red;
             float rechargeTimeCounter = currentSettings.rechargeTime;
+            var isVisible = true;
+            int counter = 0;
             while (rechargeTimeCounter > 0)
             {
+                if (counter >= 10)
+                {
+                    isVisible = !isVisible;
+                    counter = 0;
+                }
                 float t = (currentSettings.rechargeTime - rechargeTimeCounter) / currentSettings.rechargeTime;
                 weaponSprite.color = Color.Lerp(Color.red, Color.white, t);
+                weaponSprite.enabled = isVisible;
                 rechargeTimeCounter -= Time.deltaTime;
+                counter++;
                 yield return null;
             }
+            weaponSprite.enabled = true;
+            weaponSprite.color = Color.white;
             currentBulletsCount = currentSettings.storage;
             _onReload = false;
         }
