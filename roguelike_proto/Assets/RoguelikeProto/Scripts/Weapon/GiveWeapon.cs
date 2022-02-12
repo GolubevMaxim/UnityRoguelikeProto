@@ -1,3 +1,4 @@
+using System;
 using RoguelikeProto.Scripts.Player;
 using UnityEngine;
 
@@ -19,6 +20,20 @@ namespace RoguelikeProto.Scripts.Weapon
         
         void Update()
         {
+
+            var scroll = Input.GetAxis("Mouse ScrollWheel");
+            Debug.Log(scroll);
+            if (Math.Abs(scroll) > 0.1)
+            {
+                if (_currentWeapon == Weapon.Ak47)
+                {
+                    gettingWeapon(Weapon.Pistol);
+                }
+                else
+                {
+                    gettingWeapon(Weapon.Ak47);
+                }
+            }
             if(Input.GetKeyDown(KeyCode.Alpha1))
                 gettingWeapon(Weapon.Ak47);
             if(Input.GetKeyDown(KeyCode.Alpha2))

@@ -195,5 +195,5 @@ MonoBehaviour:
   wavesCount: 3
   enemiesInWaveCount: 3
   summonPointsCount: 3
-  sizeX: 40
-  sizeY: 40
+  sizeX: 30
+  sizeY: 30
