@@ -36,7 +36,12 @@ namespace RoguelikeProto.Scripts.Player
         {
             if (!_isRolling && !_onCoolDown && Input.GetKeyDown(KeyCode.Space))
             {
-                RollingDirection = (_aim.transform.position - transform.position).normalized * playerSettings.rollDistance;
+                
+                var x = Input.GetAxis("Horizontal");
+                var y = Input.GetAxis("Vertical");
+                var directionVec = Vector2.ClampMagnitude(new Vector2(x, y), 1f);
+                
+                RollingDirection = directionVec * playerSettings.rollDistance;
                 _isRolling = true;
                 _playerSprite.color = Color.black;
                 StartCoroutine(RollingCoroutine());
