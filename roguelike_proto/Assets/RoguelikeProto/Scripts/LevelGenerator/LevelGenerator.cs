@@ -277,7 +277,18 @@ namespace RoguelikeProto.Scripts.LevelGenerator
                                 roomIndex += (int)Mathf.Pow(2, i);
                             }
                         }
-                        Object.Instantiate(rooms[roomIndex - 1], new Vector3((x - 5) * 50, y * 50, 0), Quaternion.identity);
+                        var room = Object.Instantiate(rooms[roomIndex - 1], new Vector3((x - 5) * 50, y * 50, 0), Quaternion.identity);
+                        
+                        if (x == 5 && y == 0)
+                        {
+                            foreach (Transform child in room.transform)
+                            {
+                                if (child.CompareTag("Floor"))
+                                {
+                                    Destroy(child.GetComponent<Collider2D>());
+                                }
+                            }
+                        }
                     }
                 }
             } 
