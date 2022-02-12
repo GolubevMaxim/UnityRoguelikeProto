@@ -12,14 +12,14 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         private void MoveNpcInPlayerDirection()
         {
             _npc.transform.Translate((_player.transform.position - _npc.transform.position) 
-                                     * (_enemySettings.speed * Time.deltaTime));
+                                     * (EnemySettings.speed * Time.deltaTime));
         }
 
         protected override void Update()
         {
-            if (Vector2.Distance(_npc.transform.position, _player.transform.position) < _enemySettings.attackRange)
+            if (Vector2.Distance(_npc.transform.position, _player.transform.position) < EnemySettings.attackRange)
             {
-                NextState = new Attack(_player, _npc, _enemySettings);
+                NextState = new Attack(_player, _npc, EnemySettings);
                 stage = EVENT.Exit;
             }
             else

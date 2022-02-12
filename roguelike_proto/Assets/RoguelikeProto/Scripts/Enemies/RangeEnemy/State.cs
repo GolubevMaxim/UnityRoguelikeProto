@@ -23,14 +23,14 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         protected Transform _player;
         protected Transform _npc;
         protected State NextState;
-        protected EnemySettingsSo _enemySettings;
+        protected readonly EnemySettingsSo EnemySettings;
 
         protected State(Transform player, Transform npc, EnemySettingsSo enemySettings)
         {
             stage = EVENT.Enter;
             _npc = npc;
             _player = player;
-            _enemySettings = enemySettings;
+            EnemySettings = enemySettings;
         }
 
         protected virtual void Enter()

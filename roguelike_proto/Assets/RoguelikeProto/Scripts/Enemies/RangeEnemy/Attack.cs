@@ -32,9 +32,9 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         protected override void Update()
         {
             if ((Time.time - _enterTime) > 1 &&
-                (Vector2.Distance(_npc.transform.position, _player.transform.position) > _enemySettings.attackRange))
+                (Vector2.Distance(_npc.transform.position, _player.transform.position) > EnemySettings.attackRange))
             {
-                NextState = new Move(_player, _npc, _enemySettings);
+                NextState = new Move(_player, _npc, EnemySettings);
                 stage = EVENT.Exit;
             }
             else
