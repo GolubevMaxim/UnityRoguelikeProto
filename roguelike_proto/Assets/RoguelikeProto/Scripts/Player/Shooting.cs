@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using RoguelikeProto.Scripts.Bullet;
+using RoguelikeProto.Scripts.UI;
 using RoguelikeProto.Scripts.Weapon;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace RoguelikeProto.Scripts.Player
         }
         void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !GetComponent<Movement>()._isRolling)
+            if (Input.GetMouseButtonDown(0) && !GetComponent<Movement>()._isRolling && !PauseMenu.OnPause)
             {
                 GetWeapon().GetComponent<PlayerShooting>().Shoot(aim);
             }

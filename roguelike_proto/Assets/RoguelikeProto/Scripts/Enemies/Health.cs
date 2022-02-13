@@ -14,7 +14,10 @@ namespace RoguelikeProto.Scripts.Enemies
 
         private void FixedUpdate()
         {
-            if(currentHealth <= 0) Destroy(gameObject);
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

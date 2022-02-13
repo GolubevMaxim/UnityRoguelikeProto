@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace RoguelikeProto.Scripts.Player
@@ -7,7 +8,7 @@ namespace RoguelikeProto.Scripts.Player
     {
         public float currentHealth;
         [SerializeField] private PlayerSettingsSo playerSettings;
-
+        [SerializeField] private GameObject aim;
         private void Start()
         {
             currentHealth = playerSettings.maxHealth;
@@ -15,7 +16,11 @@ namespace RoguelikeProto.Scripts.Player
 
         private void FixedUpdate()
         {
-            if(currentHealth <= 0) Destroy(gameObject);
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+                Destroy(aim);
+            }
         }
     }
 }
