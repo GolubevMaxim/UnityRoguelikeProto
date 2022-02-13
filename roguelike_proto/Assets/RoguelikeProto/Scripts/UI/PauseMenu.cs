@@ -40,6 +40,8 @@ namespace RoguelikeProto.Scripts.UI
 
         public void QuitToMenu()
         {
+            Time.timeScale = 1;
+            OnPause = false;
             SceneManager.LoadScene("MenuScene");
         }
 
