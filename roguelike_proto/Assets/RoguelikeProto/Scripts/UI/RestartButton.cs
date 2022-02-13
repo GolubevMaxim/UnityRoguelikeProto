@@ -5,11 +5,11 @@ namespace RoguelikeProto.Scripts.UI
 {
     public class RestartButton : MonoBehaviour
     {
-        [SerializeField] private GameObject _restartButton;
+        [SerializeField] private GameObject deathScreen;
         [SerializeField] private GameObject _player;
         void Update()
         {
-            _restartButton.SetActive(_player == null);
+            deathScreen.SetActive(_player == null);
         }
 
         public void Restart()
