@@ -625,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   playerSettings: {fileID: 11400000, guid: ed6a7e458ac135c47b9e5168831bd2c3, type: 2}
+  aim: {fileID: 88125794}
 --- !u!1 &362034513
 GameObject:
   m_ObjectHideFlags: 0
