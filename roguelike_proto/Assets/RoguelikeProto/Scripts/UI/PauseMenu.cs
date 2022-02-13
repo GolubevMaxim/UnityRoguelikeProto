@@ -8,10 +8,11 @@ namespace RoguelikeProto.Scripts.UI
         public static bool OnPause = false;
 
         [SerializeField] private GameObject pauseScreen;
+        [SerializeField] private GameObject player;
         
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && player != null)
             {
                 if (OnPause) Resume();
                 else Pause();
