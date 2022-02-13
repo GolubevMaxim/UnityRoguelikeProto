@@ -38,6 +38,11 @@ namespace RoguelikeProto.Scripts.UI
             Application.Quit();
         }
 
+        public void QuitToMenu()
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
+
         void Pause()
         {
             pauseScreen.SetActive(true);
