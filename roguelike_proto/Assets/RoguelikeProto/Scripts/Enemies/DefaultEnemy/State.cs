@@ -1,7 +1,6 @@
-using RoguelikeProto.Scripts.Weapon;
 using UnityEngine;
 
-namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
+namespace RoguelikeProto.Scripts.Enemies.DefaultEnemy
 {
     public class State
     { 

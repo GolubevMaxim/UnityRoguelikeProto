@@ -1,17 +1,17 @@
 using UnityEngine;
 
-namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
+namespace RoguelikeProto.Scripts.Enemies.BoomEnemy
 {
     public class AI : MonoBehaviour
     {
-        [SerializeField] private EnemySettingsSo enemySettings;
         private Transform _player;
-
         private State _state;
+
+        [SerializeField] private EnemySettingsSo _enemySettings;
         void Start()
         {
             _player = GameObject.FindWithTag("Player").transform;
-            _state = new Move(_player, this.transform, enemySettings);
+            _state = new Move(_player, this.transform, _enemySettings);
         }
 
         void Update()
@@ -20,7 +20,6 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
             {
                 return;
             }
-
             _state = _state.Process();
         }
     }

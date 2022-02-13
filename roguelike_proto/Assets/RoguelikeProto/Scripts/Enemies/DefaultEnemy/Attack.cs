@@ -1,12 +1,13 @@
 using RoguelikeProto.Scripts.Weapon;
 using UnityEngine;
 
-namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
+namespace RoguelikeProto.Scripts.Enemies.DefaultEnemy
 {
     public class Attack : State
     {
         private float _enterTime;
-        public Attack(Transform player, Transform npc, EnemySettingsSo enemySettings) : base(player, npc, enemySettings)
+        public Attack(Transform player, Transform npc, EnemySettingsSo enemySettingsSo) 
+            : base(player, npc, enemySettingsSo)
         {
             Name = STATE.Attack;
         }
@@ -32,7 +33,8 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
         protected override void Update()
         {
             if ((Time.time - _enterTime) > 1 &&
-                (Vector2.Distance(_npc.transform.position, _player.transform.position) > EnemySettings.attackRange))
+                (Vector2.Distance(_npc.transform.position, _player.transform.position)
+                 > EnemySettings.attackRange))
             {
                 NextState = new Move(_player, _npc, EnemySettings);
                 stage = EVENT.Exit;

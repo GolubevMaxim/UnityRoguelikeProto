@@ -1,7 +1,9 @@
+using System.Collections;
 using RoguelikeProto.Scripts.Weapon;
+using UnityEditor;
 using UnityEngine;
 
-namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
+namespace RoguelikeProto.Scripts.Enemies.BoomEnemy
 {
     public class Attack : State
     {
@@ -14,13 +16,7 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
 
         private void AttackNpc()
         {
-            foreach (Transform child in _npc)
-            {
-                if (child.CompareTag("Weapon"))
-                {
-                    child.GetComponent<EnemyShooting>().Shoot(_player.gameObject);
-                }   
-            }
+            _npc.GetComponent<AttackPrep>().Attack();
         }
 
         protected override void Enter()
@@ -32,7 +28,7 @@ namespace RoguelikeProto.Scripts.Enemies.MeleeEnemy
 
         protected override void Update()
         {
-            if ((Time.time - _enterTime) > 1 &&
+            if ((Time.time - _enterTime) > 10 &&
                 (Vector2.Distance(_npc.transform.position, _player.transform.position)
                  > EnemySettings.attackRange))
             {

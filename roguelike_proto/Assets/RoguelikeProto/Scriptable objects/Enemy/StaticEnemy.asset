@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d34f34ae06715904bb39e6373af232b7, type: 3}
-  m_Name: Melee enemy settings
+  m_Name: StaticEnemy
   m_EditorClassIdentifier: 
-  speed: 10
-  maxHealth: 5
-  attackRange: 5
+  speed: 0
+  maxHealth: 15
+  attackRange: 25

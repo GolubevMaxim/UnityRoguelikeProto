@@ -1,10 +1,9 @@
 using UnityEngine;
 
-namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
+namespace RoguelikeProto.Scripts.Enemies.BoomEnemy
 {
-    public class State
-    {
-
+    public class State 
+    { 
         public enum STATE
         {
             Move,
@@ -18,19 +17,20 @@ namespace RoguelikeProto.Scripts.Enemies.RangeEnemy
             Exit
         }
 
+        protected readonly EnemySettingsSo EnemySettings;
+        
         protected STATE Name;
         protected EVENT stage;
         protected Transform _player;
         protected Transform _npc;
         protected State NextState;
-        protected readonly EnemySettingsSo EnemySettings;
 
         protected State(Transform player, Transform npc, EnemySettingsSo enemySettings)
         {
+            EnemySettings = enemySettings;
             stage = EVENT.Enter;
             _npc = npc;
             _player = player;
-            EnemySettings = enemySettings;
         }
 
         protected virtual void Enter()
