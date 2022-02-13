@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2635591735183595207}
   - component: {fileID: 4561458683605976897}
   - component: {fileID: -4244873736941066545}
+  - component: {fileID: 4194687529122231965}
   m_Layer: 0
   m_Name: StaticEnemy
   m_TagString: Enemy
@@ -516,6 +517,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4194687529122231965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487638934270440359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4745aeee042aa4f9602feef6729500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inMove: 0
 --- !u!1001 &1559825765166551834
 PrefabInstance:
   m_ObjectHideFlags: 0

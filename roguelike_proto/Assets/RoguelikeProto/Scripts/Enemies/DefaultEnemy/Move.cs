@@ -11,12 +11,12 @@ namespace RoguelikeProto.Scripts.Enemies.DefaultEnemy
 
         private void MoveNpcInPlayerDirection()
         {
-            _npc.transform.Translate((_player.transform.position - _npc.transform.position).normalized
-                                     * (EnemySettings.speed * Time.deltaTime));
+            _npc.GetComponent<DefaultMoving>().Move(_player, _npc, EnemySettings);
         }
 
         protected override void Update()
         {
+            if (_npc.GetComponent<DefaultMoving>().inMove) return;
             if (Vector2.Distance(_npc.transform.position, _player.transform.position)
                 < EnemySettings.attackRange)
             {

@@ -8,5 +8,6 @@ namespace RoguelikeProto.Scripts.Enemies
         [SerializeField] public float speed;
         [SerializeField] public int maxHealth;
         [SerializeField] public float attackRange;
+        [SerializeField] public float missDirection;
     }
 }
