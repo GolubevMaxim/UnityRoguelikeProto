@@ -32,6 +32,7 @@ namespace RoguelikeProto.Scripts.Weapon
         }
         IEnumerator ReloadingCoroutine(WeaponSettingsSo currentSettings)
         {
+            _onReload = true;
             var weaponSprite = transform.Find("sprite").GetComponent<SpriteRenderer>();
             weaponSprite.color = Color.red;
             float rechargeTimeCounter = currentSettings.rechargeTime;
@@ -39,6 +40,7 @@ namespace RoguelikeProto.Scripts.Weapon
             int counter = 0;
             while (rechargeTimeCounter > 0)
             {
+                Debug.Log (Time.time + " " + rechargeTimeCounter);
                 if (counter >= 10)
                 {
                     isVisible = !isVisible;
@@ -47,7 +49,7 @@ namespace RoguelikeProto.Scripts.Weapon
                 float t = (currentSettings.rechargeTime - rechargeTimeCounter) / currentSettings.rechargeTime;
                 weaponSprite.color = Color.Lerp(Color.red, Color.white, t);
                 weaponSprite.enabled = isVisible;
-                rechargeTimeCounter -= Time.deltaTime;
+                rechargeTimeCounter -= Math.Abs(Time.fixedDeltaTime);
                 counter++;
                 yield return null;
             }
@@ -59,9 +61,8 @@ namespace RoguelikeProto.Scripts.Weapon
 
         public void Shoot(GameObject target)
         {
-            if (currentBulletsCount <= 0)
+            if (currentBulletsCount <= 0 && !_onReload)
             {
-                _onReload = true;
                 StartCoroutine(ReloadingCoroutine(settings));
             }
             if (_onCooldown || _onReload)
