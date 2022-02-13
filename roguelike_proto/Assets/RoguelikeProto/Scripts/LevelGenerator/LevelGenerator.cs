@@ -243,19 +243,14 @@ namespace RoguelikeProto.Scripts.LevelGenerator
     public class LevelGenerator : MonoBehaviour
     {
         private static int _roomN = 20;
-
-        private static GameObject GetPrefabByGuid(string guid)
-        {
-            return AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
-        }
+        
         private static void Generate()
         {
-            string[] guids = AssetDatabase.FindAssets("t:prefab", new[] {"Assets/RoguelikeProto/Prefabs/Rooms"});
             List<GameObject> rooms = new List<GameObject>();
-            
-            foreach (string guid in guids)
+
+            for (int i = 1; i < 16; i++)
             {
-                rooms.Add(GetPrefabByGuid(guid));
+                rooms.Add(Resources.Load<GameObject>($"Prefabs/Rooms/Room{i}"));
             }
 
             var map = new Map(_roomN);

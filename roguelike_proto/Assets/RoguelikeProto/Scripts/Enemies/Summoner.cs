@@ -30,19 +30,12 @@ namespace RoguelikeProto.Scripts.Enemies
         private Queue<GameObject> _enemyQueue;
         private List<Vector2> _summonPoints;
 
-        private static GameObject GetPrefabByGuid(string guid)
-        {
-            return AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
-        }
-        
+       
         private List<GameObject> LoadEnemyObj()
         {
-            var guids = AssetDatabase.FindAssets("t:prefab", new[] {"Assets/RoguelikeProto/Prefabs/Enemies"});
-            
-            var enemies = new List<GameObject>();
+            var enemies = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Enemies"));
             if (enemies == null) throw new ArgumentNullException(nameof(enemies));
 
-            enemies.AddRange(guids.Select(GetPrefabByGuid));
             return enemies;
         }
 

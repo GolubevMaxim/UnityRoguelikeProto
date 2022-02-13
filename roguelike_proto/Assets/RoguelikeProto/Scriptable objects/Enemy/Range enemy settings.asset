@@ -15,3 +15,4 @@ MonoBehaviour:
   speed: 3
   maxHealth: 10
   attackRange: 10
+  missDirection: 0.5
