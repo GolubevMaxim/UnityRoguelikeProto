@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d34f34ae06715904bb39e6373af232b7, type: 3}
-  m_Name: Range enemy settings
+  m_Name: BoomEnemySettings
   m_EditorClassIdentifier: 
-  speed: 3
-  maxHealth: 10
-  attackRange: 18
-  missDirection: 0.5
+  speed: 10
+  maxHealth: 6
+  attackRange: 3
+  missDirection: 1

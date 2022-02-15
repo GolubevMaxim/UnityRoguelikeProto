@@ -194,6 +194,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wavesCount: 3
   enemiesInWaveCount: 3
-  summonPointsCount: 3
   sizeX: 30
   sizeY: 30

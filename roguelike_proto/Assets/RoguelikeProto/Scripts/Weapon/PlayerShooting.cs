@@ -40,7 +40,6 @@ namespace RoguelikeProto.Scripts.Weapon
             int counter = 0;
             while (rechargeTimeCounter > 0)
             {
-                Debug.Log (Time.time + " " + rechargeTimeCounter);
                 if (counter >= 10)
                 {
                     isVisible = !isVisible;

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using RoguelikeProto.Scripts.Room;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,9 +14,6 @@ namespace RoguelikeProto.Scripts.Enemies
         [SerializeField]
         private int enemiesInWaveCount;
         
-        [SerializeField]
-        private int summonPointsCount;
-        
         [SerializeField] 
         private int sizeX;
         [SerializeField] 
@@ -28,7 +23,6 @@ namespace RoguelikeProto.Scripts.Enemies
 
         private List<GameObject> _enemyObjects;
         private Queue<GameObject> _enemyQueue;
-        private List<Vector2> _summonPoints;
 
        
         private List<GameObject> LoadEnemyObj()
@@ -43,18 +37,7 @@ namespace RoguelikeProto.Scripts.Enemies
         {
             _doorCloser = transform.GetComponentInChildren<DoorCloser>();   
             _enemyObjects = LoadEnemyObj();
-            _summonPoints = new List<Vector2>();
             _enemyQueue = new Queue<GameObject>();
-
-            for (int i = 0; i < summonPointsCount; i++)
-            {
-                var position = transform.position;
-                
-                var posX = position.x + Random.Range(-sizeX / 2, sizeX / 2);
-                var posY = position.y + Random.Range(-sizeY / 2, sizeY / 2);
-                
-                _summonPoints.Add(new Vector2(posX, posY));
-            }
 
             for (var i = 0; i < wavesCount * enemiesInWaveCount; i++)
             {
@@ -70,17 +53,50 @@ namespace RoguelikeProto.Scripts.Enemies
             }
         }
 
+        private Vector3? GenerateEnemySpawnPosition()
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                var position = transform.position;
+                var positionX = position.x + Random.Range(-sizeX / 2, sizeX / 2);
+                var positionY = position.y + Random.Range(-sizeY / 2, sizeY / 2);
+                
+                var enemySpawnPosition = new Vector3(positionX, positionY, 0);
+                var playerPosition = GameObject.FindWithTag("Player").transform.position;
+
+                if (!((playerPosition - enemySpawnPosition).magnitude > 10)) continue;
+                
+                var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                var isEnemiesFarEnough = true;
+                    
+                foreach (var enemy in enemies)
+                {
+                    if ((enemy.transform.position - enemySpawnPosition).magnitude < 5)
+                    {
+                        isEnemiesFarEnough = false;
+                    }
+                }
+                    
+                if (isEnemiesFarEnough) return enemySpawnPosition;
+            }
+
+            return null;
+        }
+
         private IEnumerator FightCoroutine()
         {
             while (_enemyQueue.Count != 0)
             {
                 if (_doorCloser.aliveEnemiesCount == 0)
                 {
-                    for (int i = 0; i < enemiesInWaveCount; i++)
+                    for (var i = 0; i < enemiesInWaveCount; i++)
                     {
-                        var enemy = _enemyQueue.Dequeue();
-                        var pos = _summonPoints[Random.Range(0, summonPointsCount)];
-                        Instantiate(enemy, pos, Quaternion.identity);
+                        var enemyObject = _enemyQueue.Dequeue();
+                        var enemySpawnPoint = GenerateEnemySpawnPosition();
+
+                        if (enemySpawnPoint == null) continue;
+                        
+                        Instantiate(enemyObject, (Vector3) enemySpawnPoint, Quaternion.identity);
                     }
                 }
 
