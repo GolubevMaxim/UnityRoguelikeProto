@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesCount: 3
-  enemiesInWaveCount: 3
+  enemiesInWaveCount: 5
   sizeX: 30
   sizeY: 30
+  spawnTime: 1.5

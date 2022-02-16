@@ -5,7 +5,7 @@ using RoguelikeProto.Scripts.Room;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace RoguelikeProto.Scripts.Enemies
+namespace RoguelikeProto.Scripts.FightSystem
 {
     public class Summoner : MonoBehaviour
     {
@@ -18,19 +18,25 @@ namespace RoguelikeProto.Scripts.Enemies
         private int sizeX;
         [SerializeField] 
         private int sizeY;
+
+        [SerializeField] private float spawnTime;
         
         private DoorCloser _doorCloser;
 
         private List<GameObject> _enemyObjects;
         private Queue<GameObject> _enemyQueue;
-
        
-        private List<GameObject> LoadEnemyObj()
+        private static List<GameObject> LoadEnemyObj()
         {
             var enemies = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Enemies"));
             if (enemies == null) throw new ArgumentNullException(nameof(enemies));
 
             return enemies;
+        }
+
+        private static GameObject LoadSpawner()
+        {
+            return Resources.Load<GameObject>("Prefabs/Spawner/Spawner");
         }
 
         private void Start()
@@ -83,6 +89,22 @@ namespace RoguelikeProto.Scripts.Enemies
             return null;
         }
 
+        private IEnumerator SpawnEnemyCoroutine(Vector3 spawnPosition, GameObject enemyObject)
+        {
+            var spawnCircle = Instantiate(LoadSpawner(), spawnPosition, Quaternion.identity);
+
+            for (var i = 0f; i < 100; i++)
+            {
+                spawnCircle.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.black, Color.red, i / 100);
+                yield return new WaitForSeconds(spawnTime / 100);
+            }
+            
+            Destroy(spawnCircle);
+            Instantiate(enemyObject, spawnPosition, Quaternion.identity);
+
+            yield return null;
+        }
+
         private IEnumerator FightCoroutine()
         {
             while (_enemyQueue.Count != 0)
@@ -95,9 +117,11 @@ namespace RoguelikeProto.Scripts.Enemies
                         var enemySpawnPoint = GenerateEnemySpawnPosition();
 
                         if (enemySpawnPoint == null) continue;
-                        
-                        Instantiate(enemyObject, (Vector3) enemySpawnPoint, Quaternion.identity);
+
+                        StartCoroutine(SpawnEnemyCoroutine((Vector3) enemySpawnPoint, enemyObject));
                     }
+
+                    yield return new WaitForSeconds(spawnTime * 2);
                 }
 
                 yield return new WaitForSeconds(0.1f);
